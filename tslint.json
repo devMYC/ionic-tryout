@@ -1,11 +1,28 @@
 {
+  "extends": "tslint:recommended",
   "rules": {
+    "arrow-parens": [ true, "ban-single-arg-parens" ],
+    "indent": [ true, "spaces" ],
+    "interface-name": [ true, "never-prefix" ],
+    "no-consecutive-blank-lines": [ true, 3 ],
     "no-duplicate-variable": true,
-    "no-unused-variable": [
-      true
-    ]
-  },
-  "rulesDirectory": [
-    "node_modules/tslint-eslint-rules/dist/rules"
-  ]
+    "no-trailing-whitespace": true,
+    "no-unused-expression": [ true, "allow-fast-null-checks", "allow-new" ],
+    "prefer-const": [ true, { "destructuring": "all" } ],
+    "quotemark": [ true, "single", "avoid-escape" ],
+    "semicolon": [ true, "never" ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "objects": "always",
+          "arrays": "always",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        }
+      }
+    ],
+    "triple-equals": true,
+    "variable-name": [ true, "ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case" ]
+  }
 }

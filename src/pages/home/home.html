@@ -1,14 +1,43 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Ionic</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="toggleReorder()">
+        Edit
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding fullscreen>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list [reorder]="shouldReorder" (ionItemReorder)="$event.applyTo(people)">
+    <ion-item-sliding *ngFor="let person of people"
+      (ionDrag)="itemOnDrag($event)"
+      (click)="pushPage(person)"
+    >
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="person.picture.thumbnail" alt="">
+        </ion-avatar>
+        {{ person.name.first }} {{ person.name.last }}
+        <ion-note item-right>{{ person.phone }}</ion-note>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="itemOnDelete(person)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more people..."
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
