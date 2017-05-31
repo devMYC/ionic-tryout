@@ -1,5 +1,10 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Ionic</ion-title>
     <ion-buttons end>
       <button ion-button (click)="toggleReorder()">
@@ -26,9 +31,8 @@
         <ion-note item-right>{{ person.phone }}</ion-note>
       </ion-item>
       <ion-item-options>
-        <button ion-button color="danger" (click)="itemOnDelete(person)">
+        <button ion-button icon-only color="danger" large (click)="itemOnDelete(person)">
           <ion-icon name="trash"></ion-icon>
-          Delete
         </button>
       </ion-item-options>
     </ion-item-sliding>

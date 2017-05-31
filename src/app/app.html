@@ -1,1 +1,17 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-nav [root]="rootPage" #mainNav></ion-nav>
+<ion-menu [content]="mainNav">
+  <ion-content>
+    <ion-list>
+      <button ion-button clear color="dark" icon-only menuClose>
+        <ion-icon name="close"></ion-icon>
+      </button>
+      <button ion-button full clear color="dark" large>Menu Item 1</button>
+      <button ion-button full clear color="dark" large>Menu Item 2</button>
+      <button ion-button full clear color="dark" large>Menu Item 3</button>
+      <button ion-button full clear color="dark" large>Menu Item 4</button>
+      <button ion-button full clear color="dark" large>Menu Item 5</button>
+      <button ion-button full clear color="dark" large>Menu Item 6</button>
+      <button ion-button full clear color="dark" large>Menu Item 7</button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
