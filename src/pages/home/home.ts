@@ -20,6 +20,7 @@ export class HomePage {
   public shouldPushPage: boolean = true
   public swiped: boolean = false
   public slidingClicked: boolean = false
+  private PAGE_LIMIT: number = 5
 
   constructor(
     public alertCtrl: AlertController,
@@ -27,14 +28,14 @@ export class HomePage {
     public navCtrl: NavController,
     public service: PeopleProvider
   ) {
-    this.service.getPeople()
+    this.service.getPeople(this.PAGE_LIMIT)
       .subscribe(
         data => { this.people = data.results }
       )
   }
 
   public doInfinite(e: any): void {
-    this.service.getPeople()
+    this.service.getPeople(this.PAGE_LIMIT)
       .subscribe(
         data => this.people.push(...data.results),
         err => console.error(err),
@@ -43,7 +44,7 @@ export class HomePage {
   }
 
   public doRefresh(e: any): void {
-    this.service.getPeople()
+    this.service.getPeople(this.PAGE_LIMIT)
       .subscribe(
         data => this.people.unshift(...data.results),
         err => console.error(err),

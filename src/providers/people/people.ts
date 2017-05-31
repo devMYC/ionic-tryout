@@ -14,8 +14,8 @@ export class PeopleProvider {
   constructor(public http: Http) {
   }
 
-  public getPeople() {
-    return this.http.get('https://randomuser.me/api/?results=3')
+  public getPeople(limit: number) {
+    return this.http.get('https://randomuser.me/api/', { params: { results: limit } })
       .map(res => res.json())
   }
 
