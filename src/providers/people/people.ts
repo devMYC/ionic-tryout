@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Http } from '@angular/http'
 import 'rxjs/add/operator/map'
+import { Observable } from 'rxjs/Observable'
 
 /*
   Generated class for the PeopleProvider provider.
@@ -14,7 +15,7 @@ export class PeopleProvider {
   constructor(public http: Http) {
   }
 
-  public getPeople(limit: number) {
+  public getPeople(limit: number): Observable<any> {
     return this.http.get('https://randomuser.me/api/', { params: { results: limit } })
       .map(res => res.json())
   }
